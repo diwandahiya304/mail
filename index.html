@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Gmail — Email by Google">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <title>Gmail</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/inbox.css">
+  <link rel="stylesheet" href="css/drawer.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/compose.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ========== DRAWER OVERLAY ========== -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+
+    <!-- ========== NAVIGATION DRAWER ========== -->
+    <nav id="drawer" class="drawer">
+      <div class="drawer__header">Gmail</div>
+      <div id="drawer-nav" class="drawer__nav"></div>
+    </nav>
+
+    <!-- ========== SCREEN: INBOX ========== -->
+    <main id="screen-inbox" class="screen">
+      <div class="inbox-header">
+        <!-- Hamburger OUTSIDE the pill -->
+        <button id="inbox-hamburger" class="inbox-header__icon-btn" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+        <!-- Search bar pill -->
+        <div id="inbox-search-bar" class="search-bar">
+          <span class="search-bar__text">Search in emails</span>
+        </div>
+        <!-- Profile avatar OUTSIDE the pill -->
+        <div class="inbox-header__avatar">
+          <div class="avatar avatar--profile avatar--green">P</div>
+        </div>
+      </div>
+
+      <div class="inbox-tab-header">Primary</div>
+
+      <div id="inbox-email-list" class="email-list"></div>
+
+      <button id="compose-fab" class="fab" aria-label="Compose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1c-.1.1-.15.22-.15.36zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Compose
+      </button>
+    </main>
+
+    <!-- ========== SCREEN: SEARCH ========== -->
+    <section id="screen-search" class="screen search-screen">
+      <div class="search-header">
+        <button id="search-back" class="icon-btn" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </button>
+        <input id="search-input" class="search-header__input" type="text" placeholder="Search in emails" autocomplete="off">
+        <button id="search-clear-btn" class="icon-btn" aria-label="Clear search" style="display: none;">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+        <button id="search-voice-btn" class="icon-btn" aria-label="Voice search">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+        </button>
+      </div>
+
+      <div class="search-filters">
+        <button class="chip">Labels <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+        <button class="chip">From <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+        <button class="chip">To <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+        <button class="chip">Attachment <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+      </div>
+
+      <div class="search-recent-header">Recent email searches</div>
+      <div id="search-recent-list" class="search-recent-list"></div>
+    </section>
+
+    <!-- ========== SCREEN: EMAIL DETAIL ========== -->
+    <section id="screen-detail" class="screen detail-screen">
+      <div class="detail-toolbar">
+        <button id="detail-back" class="icon-btn" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </button>
+        <div class="detail-toolbar__spacer"></div>
+        <!-- Archive -->
+        <button class="icon-btn" aria-label="Archive">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.83 1H5.42l.82-1zM5 19V8h14v11H5zm8.45-9h-2.9v3H8l4 4 4-4h-2.55z"/></svg>
+        </button>
+        <!-- Delete -->
+        <button class="icon-btn" aria-label="Delete">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 3V4H20V6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4V4H9V3H15ZM7 19H17V6H7V19ZM9 8H11V17H9V8ZM15 8H13V17H15V8Z" fill="#9aa0a6"/>
+</svg>
+        </button>
+
+        <!-- Mark as read / envelope -->
+        <button class="icon-btn" aria-label="Mark as read">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+        </button>
+        <!-- More -->
+        <button class="icon-btn" aria-label="More options">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </button>
+      </div>
+
+      <div class="detail-content">
+        <div class="detail-subject">
+          <h1 id="detail-subject-text" class="detail-subject__text"></h1>
+          <button id="detail-star" class="icon-btn star-btn detail-subject__star" aria-label="Star">
+            <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>
+          </button>
+        </div>
+
+        <div class="detail-message-container">
+          <div class="detail-sender">
+            <div class="detail-sender__avatar">
+              <div id="detail-sender-avatar" class="avatar">T</div>
+            </div>
+            <div class="detail-sender__info">
+              <div class="detail-sender__top">
+                <span id="detail-sender-name" class="detail-sender__name"></span>
+                <span id="detail-sender-time" class="detail-sender__time"></span>
+                <div class="detail-sender__actions">
+                  <span class="detail-sender__unsubscribe">Unsubscribe</span>
+                  <button class="icon-btn icon-btn--sm" aria-label="More">
+                    <svg viewBox="0 0 24 24" fill="#9aa0a6" width="20" height="20"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div id="detail-sender-to-btn" class="detail-sender__to">
+                to me
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6" id="detail-chevron-icon" class="chevron-icon"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div id="detail-expanded-card" class="detail-expanded-card" style="display: none;">
+            <div class="expanded-row">
+              <span class="expanded-label">From</span>
+              <div class="expanded-value">
+                <span id="detail-exp-from-name"></span>
+                <span id="detail-exp-from-email"></span>
+              </div>
+            </div>
+            <div class="expanded-row">
+              <span class="expanded-label">Reply to</span>
+              <div class="expanded-value" id="detail-exp-reply"></div>
+            </div>
+            <div class="expanded-row">
+              <span class="expanded-label">To</span>
+              <div class="expanded-value" id="detail-exp-to"></div>
+            </div>
+            <div class="expanded-row">
+              <span class="expanded-label">Date</span>
+              <div class="expanded-value" id="detail-exp-date"></div>
+            </div>
+            <div class="expanded-row">
+              <span class="expanded-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+              </span>
+              <div class="expanded-value">
+                Standard encryption (TLS).<br>
+                <span style="color: var(--text-accent); cursor: pointer; padding-top: 4px; display: inline-block;">See security details</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="detail-email-body" class="detail-body"></div>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <button id="detail-reply" class="detail-action-btn" aria-label="Reply">
+          <!-- <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg> -->
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.92139 8.13568C5.31192 7.74515 5.31192 7.11199 4.92139 6.72146L2.41421 4.21429L4.92139 1.70711C5.31192 1.31658 5.31192 0.683417 4.92139 0.292893C4.53087 -0.0976311 3.8977 -0.0976311 3.50718 0.292893L0.292893 3.50718C-0.0976311 3.8977 -0.0976311 4.53087 0.292893 4.92139L3.50718 8.13568C3.8977 8.5262 4.53087 8.5262 4.92139 8.13568Z" fill="#000000"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9999 11.6429C16.5522 11.6429 16.9999 11.1952 16.9999 10.6429V9.63843C16.9999 6.1774 14.2484 3.21433 10.7472 3.21433H2.07135C1.51907 3.21433 1.07135 3.66204 1.07135 4.21433C1.07135 4.76661 1.51907 5.21433 2.07135 5.21433H10.7472C13.0696 5.21433 14.9999 7.20627 14.9999 9.63843V10.6429C14.9999 11.1952 15.4476 11.6429 15.9999 11.6429Z" fill="#000000"/>
+</svg>
+
+          Reply
+        </button>
+        <button id="detail-forward" class="detail-action-btn" aria-label="Forward">
+          <!-- <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z"/></svg> -->
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0786 8.13568C11.6881 7.74515 11.6881 7.11199 12.0786 6.72146L14.5858 4.21429L12.0786 1.70711C11.6881 1.31658 11.6881 0.683417 12.0786 0.292893C12.4691 -0.0976311 13.1023 -0.0976311 13.4928 0.292893L16.7071 3.50718C17.0976 3.8977 17.0976 4.53087 16.7071 4.92139L13.4928 8.13568C13.1023 8.5262 12.4691 8.5262 12.0786 8.13568Z" fill="#000000"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00008 11.6429C0.447794 11.6429 7.82013e-05 11.1952 7.82013e-05 10.6429V9.63843C7.82013e-05 6.1774 2.7516 3.21433 6.25276 3.21433H14.9286C15.4809 3.21433 15.9286 3.66204 15.9286 4.21433C15.9286 4.76661 15.4809 5.21433 14.9286 5.21433H6.25276C3.93038 5.21433 2.00008 7.20627 2.00008 9.63843V10.6429C2.00008 11.1952 1.55236 11.6429 1.00008 11.6429Z" fill="#000000"/>
+</svg>
+
+          Forward
+        </button>
+        <button class="icon-btn detail-emoji-btn" aria-label="Emoji reaction">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN: COMPOSE ========== -->
+    <section id="screen-compose" class="screen compose-screen">
+      <div class="compose-toolbar">
+        <button id="compose-close" class="icon-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </button>
+        <span class="compose-toolbar__title">Compose</span>
+        <div class="compose-toolbar__actions">
+          <button class="icon-btn" aria-label="Attach">
+            <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
+          </button>
+          <button class="icon-btn" aria-label="More">
+            <svg viewBox="0 0 24 24" fill="#9aa0a6"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </button>
+          <button id="compose-send" class="icon-btn" aria-label="Send" style="color: #8ab4f8;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="compose-form">
+        <div class="compose-field">
+          <span class="compose-field__label">From</span>
+          <input class="compose-field__input" type="text" value="user@gmail.com" readonly>
+        </div>
+        <div class="compose-field">
+          <span class="compose-field__label">To</span>
+          <input id="compose-to" class="compose-field__input" type="email" placeholder="">
+          <button class="compose-field__arrow icon-btn icon-btn--sm" aria-label="Expand">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+          </button>
+        </div>
+        <div class="compose-subject">
+          <input id="compose-subject-input" type="text" placeholder="Subject">
+        </div>
+        <div class="compose-body">
+          <textarea id="compose-body-textarea" placeholder="Compose email"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BOTTOM NAVIGATION ========== -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <div class="bottom-nav__item active" data-tab="mail">
+        <div class="bottom-nav__icon">
+          <!-- Gmail envelope icon (filled style for active) -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM19.6 8.25L12.53 12.67C12.21 12.87 11.79 12.87 11.47 12.67L4.4 8.25C4.29973 8.19371 4.21192 8.11766 4.14189 8.02645C4.07186 7.93525 4.02106 7.83078 3.99258 7.71937C3.96409 7.60796 3.9585 7.49194 3.97616 7.37831C3.99381 7.26468 4.03434 7.15581 4.09528 7.0583C4.15623 6.96079 4.23632 6.87666 4.33073 6.811C4.42513 6.74533 4.53187 6.69951 4.6445 6.6763C4.75712 6.65309 4.87328 6.65297 4.98595 6.67595C5.09863 6.69893 5.20546 6.74453 5.3 6.81L12 11L18.7 6.81C18.7945 6.74453 18.9014 6.69893 19.014 6.67595C19.1267 6.65297 19.2429 6.65309 19.3555 6.6763C19.4681 6.69951 19.5749 6.74533 19.6693 6.811C19.7637 6.87666 19.8438 6.96079 19.9047 7.0583C19.9657 7.15581 20.0062 7.26468 20.0238 7.37831C20.0415 7.49194 20.0359 7.60796 20.0074 7.71937C19.9789 7.83078 19.9281 7.93525 19.8581 8.02645C19.7881 8.11766 19.7003 8.19371 19.6 8.25Z" fill="#D2E5F4"/>
+</svg>
+
+          <span class="nav-badge">99+</span>
+        </div>
+      </div>
+      <div class="bottom-nav__item" data-tab="meet">
+        <div class="bottom-nav__icon">
+          <!-- Google Meet camera icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 4H7.58579L3 8.58579V17C3 18.1046 3.89543 19 5 19H15.5C16.6046 19 17.5 18.1046 17.5 17V13.3526L21 17V6L17.5 10.0526V6C17.5 4.89543 16.6046 4 15.5 4ZM5 9.41421L8.41421 6H15.5V17H5V9.41421Z" fill="#D2E5F4"/>
+</svg>
+
+        </div>
+      </div>
+    </nav>
+
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/drawer.js"></script>
+  <script src="js/inbox.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/detail.js"></script>
+  <script src="js/compose.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

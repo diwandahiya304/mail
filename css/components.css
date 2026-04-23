@@ -1,0 +1,338 @@
+/* ============================================
+   Gmail Clone — Reusable Components
+   ============================================ */
+
+/* ---- Avatar ---- */
+.avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-weight: var(--weight-regular);
+  color: #000000;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.avatar.avatar--sm {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  font-size: var(--text-base);
+}
+
+.avatar.avatar--lg {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  font-size: var(--text-xl);
+}
+
+.avatar.avatar--profile {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  font-size: 16px;
+  font-weight: var(--weight-regular);
+  color: #ffffff;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.avatar.avatar--profile::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(#ea4335, #fbbc04, #34a853, #4285f4, #ea4335);
+  z-index: -1;
+}
+
+/* Avatar color variants */
+.avatar--blue { background-color: var(--avatar-blue); }
+.avatar--teal { background-color: var(--avatar-teal); }
+.avatar--purple { background-color: var(--avatar-purple); }
+.avatar--red { background-color: var(--avatar-red); }
+.avatar--orange { background-color: var(--avatar-orange); }
+.avatar--green { background-color: var(--avatar-green); }
+.avatar--indigo { background-color: var(--avatar-indigo); }
+.avatar--pink { background-color: var(--avatar-pink); }
+.avatar--cyan { background-color: var(--avatar-cyan); }
+.avatar--brown { background-color: var(--avatar-brown); }
+.avatar--linkedin { background-color: var(--avatar-linkedin); }
+
+/* Category avatars */
+.avatar--category {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: none;
+}
+
+.avatar--category svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---- Badge ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-family);
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.badge--count {
+  background-color: var(--bg-inbox-badge);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  min-width: 24px;
+  padding: 2px 6px;
+}
+
+.badge--new {
+  background-color: var(--badge-green);
+  color: var(--badge-text);
+  font-size: var(--text-xs);
+}
+
+.badge--inbox {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.badge--nav-count {
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  padding: 0;
+  min-width: 0;
+}
+
+/* ---- Bottom nav badge ---- */
+.nav-badge {
+  position: absolute;
+  top: 2px;
+  right: -8px;
+  background-color: var(--badge-red);
+  color: white;
+  font-size: 10px;
+  font-weight: var(--weight-medium);
+  padding: 1px 4px;
+  border-radius: var(--radius-pill);
+  min-width: 16px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ---- Icon Button ---- */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+  color: var(--icon-default);
+  position: relative;
+}
+
+.icon-btn:active {
+  background-color: var(--bg-surface-hover);
+}
+
+.icon-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.icon-btn--sm {
+  width: 36px;
+  height: 36px;
+}
+
+.icon-btn--sm svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---- Star Button ---- */
+.star-btn {
+  color: var(--icon-star);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.star-btn.starred {
+  color: var(--icon-star-active);
+}
+
+.star-btn:active {
+  transform: scale(1.2);
+}
+
+/* ---- FAB (Compose) ---- */
+.fab {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 16px);
+  right: 16px;
+  max-width: 430px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px 20px;
+  background-color: var(--bg-compose-fab);
+  color: var(--text-compose-fab);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-fab);
+  z-index: var(--z-fab);
+  font-family: var(--font-family);
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+.fab svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* ---- Chip ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  font-family: var(--font-family);
+  font-weight: var(--weight-regular);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.chip:active {
+  background-color: var(--bg-surface-hover);
+}
+
+.chip svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ---- Bottom Navigation ---- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: var(--bottom-nav-height);
+  background-color: var(--bg-bottom-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  z-index: var(--z-bottom-nav);
+  border-top: 1px solid var(--border-subtle);
+  padding-bottom: var(--safe-area-bottom);
+}
+
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 0;
+  color: var(--icon-default);
+  position: relative;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.bottom-nav__item.active {
+  color: var(--text-primary);
+}
+
+.bottom-nav__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-fast);
+}
+
+.bottom-nav__item.active .bottom-nav__icon {
+  background-color: var(--bg-active-nav);
+}
+
+.bottom-nav__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.bottom-nav__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-family);
+}
+
+/* ---- Divider ---- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 0;
+}
+
+/* ---- Unread dot ---- */
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent);
+}
+
+/* ---- Section header ---- */
+.section-header {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: var(--space-base) var(--space-base) var(--space-sm);
+}

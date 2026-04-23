@@ -1,0 +1,16 @@
+{
+  "name": "Gmail",
+  "short_name": "Gmail",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1d2025",
+  "theme_color": "#1d2025",
+  "icons": [
+    {
+      "src": "./icon2.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

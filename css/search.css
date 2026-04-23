@@ -1,0 +1,111 @@
+/* ============================================
+   Gmail Clone — Search Screen
+   ============================================ */
+
+.search-screen {
+  z-index: var(--z-search);
+}
+
+/* ---- Search Header ---- */
+.search-header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-xs);
+  gap: var(--space-xs);
+  border-bottom: 1px solid var(--divider);
+}
+
+.search-header__input {
+  flex: 1;
+  height: 44px;
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  caret-color: var(--accent);
+  font-family: var(--font-family-body);
+}
+
+.search-header__input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* ---- Filter Chips ---- */
+.search-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-base);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ---- Recent Searches ---- */
+.search-recent-header {
+  padding: var(--space-lg) var(--space-base) var(--space-sm);
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+}
+
+.search-recent-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.search-recent-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-base);
+  gap: var(--space-base);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.search-recent-item:active {
+  background-color: var(--bg-email-hover);
+}
+
+.search-recent-item__icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-default);
+}
+
+.search-recent-item__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.search-recent-item__text {
+  flex: 1;
+  font-size: 17px;
+  color: var(--text-primary);
+  font-family: var(--font-family-body);
+}
+
+/* ---- Quick Result Card ---- */
+.search-result-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  gap: 16px;
+  cursor: pointer;
+  background-color: var(--bg-surface);
+  margin: 0 8px 8px;
+  border-radius: 16px;
+}
+
+.search-result-card:active {
+  background-color: var(--bg-surface-hover);
+}
+
+mark.search-highlight {
+  background-color: #f7df8b;
+  color: #000000;
+  border-radius: 2px;
+  padding: 0 1px;
+}

@@ -1,0 +1,139 @@
+/* ============================================
+   Gmail Clone — Navigation Drawer
+   ============================================ */
+
+/* ---- Overlay ---- */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  background-color: var(--bg-overlay);
+  z-index: var(--z-drawer-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-drawer);
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---- Drawer ---- */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -215px;
+  width: 310px;
+  max-width: 85%;
+  height: 100%;
+  background-color: var(--bg-drawer);
+  z-index: var(--z-drawer);
+  transform: translateX(-150%);
+  transition: transform var(--transition-drawer);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+/* ---- Header ---- */
+.drawer__header {
+  padding: var(--space-lg) var(--space-base) var(--space-base) var(--space-xl);
+  font-family: var(--font-family);
+  font-size: var(--text-xxxl);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+}
+
+/* ---- Nav List ---- */
+.drawer__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-sm) 0;
+}
+
+.drawer__section-label {
+  padding: var(--space-lg) var(--space-xl) var(--space-sm);
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  text-transform: none;
+  font-family: var(--font-family-body);
+}
+
+.drawer__item {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-xl);
+  height: 48px;
+  gap: var(--space-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  margin-right: var(--space-md);
+  position: relative;
+}
+
+.drawer__item:active {
+  background-color: var(--bg-surface-hover);
+}
+
+.drawer__item.active {
+  background-color: var(--bg-active-nav);
+}
+
+.drawer__item__icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-nav);
+  flex-shrink: 0;
+}
+
+.drawer__item.active .drawer__item__icon {
+  color: var(--text-accent);
+}
+
+.drawer__item__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.drawer__item__label {
+  flex: 1;
+  font-size: 16px;
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.drawer__item.active .drawer__item__label {
+  color: var(--text-accent);
+}
+
+.drawer__item__count {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: var(--weight-regular);
+}
+
+.drawer__item.active .drawer__item__count {
+  color: var(--text-accent);
+}
+
+.drawer__divider {
+  margin: var(--space-sm) 0;
+  border-color: var(--divider);
+}
