@@ -500,6 +500,42 @@ View profile and respond on X.
     hasAttachment: false
   },
   {
+    id: 102,
+    sender: 'Ankit Kumar',
+    senderEmail: 'ankitkumar@effiya.com',
+    avatarLetter: 'E',
+    avatarColor: 'blue',
+    subject: 'Offer Letter from Effiya Technologies Pvt. Ltd.',
+    preview: 'Dear All, PFB the list of shortlisted stude...',
+    body: `Dear Diwan,
+
+
+We are pleased to inform you that you have been selected for an opportunity with Effiya Technologies Pvt. Ltd..
+
+Please find attached your EFFIYA internship letter - Diwan Singh Dahiya for your review. The document contains details regarding your role, responsibilities, and terms of engagement.
+
+We request you to carefully go through the offer letter and confirm your acceptance as per the instructions mentioned in the document.
+
+In case of any queries or clarifications, feel free to reach out to us.
+
+
+We look forward to having you onboard and wish you a successful journey with us.
+
+
+Best Regards,
+Ankit Kumar
+Effiya Technologies Pvt. Ltd.`,
+    time: '10:03',
+    date: '26 Jan',
+    isUnread: false,
+    isStarred: true,
+    category: 'primary',
+    hasAttachment: true,
+    attachments: [
+      { type: 'pdf', name: 'Offer Letter...', url: './Offer Letter.pdf', size: '1MB' }
+    ]
+  },
+  {
     id: 15,
     sender: 'Vercel',
     senderEmail: 'notifications@vercel.com',
