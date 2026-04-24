@@ -573,7 +573,7 @@ Effiya Technologies Pvt. Ltd.`,
     category: 'primary',
     hasAttachment: false,
     attachments: [
-      {type: 'pdf', name: 'Performance Report', url: './Performance.pdf', size: '1MB'}
+      {}
     ]
   },
   {
@@ -617,7 +617,7 @@ Effiya Technologies Pvt. Ltd.`,
     category: 'primary',
     hasAttachment: true,
     attachments: [
-      {}
+      {type: 'pdf', name: 'Performance Report', url: './Performance.pdf', size: '1MB'}
     ]
   },
   {
