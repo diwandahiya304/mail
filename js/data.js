@@ -537,7 +537,7 @@ Effiya Technologies Pvt. Ltd.`,
   },
   {
     id: 112,
-    sender: 'Complete Your Welcome Kit Form – Effiya Technologies Pvt. Ltd.',
+    sender: 'HR Team - Effiya',
     senderEmail: 'hr@effiya.com',
     avatarLetter: 'E',
     avatarColor: 'blue',
@@ -572,6 +572,50 @@ Effiya Technologies Pvt. Ltd.`,
     isStarred: true,
     category: 'primary',
     hasAttachment: false,
+    attachments: [
+      {type: 'pdf', name: 'Performance Report', url: './Performance.pdf', size: '1MB'}
+    ]
+  },
+  {
+    id: 114,
+    sender: 'HR-Team Effiya',
+    senderEmail: 'hr@effiya.com',
+    avatarLetter: 'E',
+    avatarColor: 'blue',
+    subject: 'Your Performance Report – Effiya Technologies Pvt. Ltd. ',
+    preview: 'Dear Diwan, Hope...',
+    body: `Dear Diwan,
+
+
+Hope this message finds you well.
+
+As requested, please find attached your Performance Report for Q1 2025. The report provides a comprehensive overview of your contributions, achievements, and areas of growth during the quarter.
+
+The document includes the following sections:
+
+Overall Performance Summary – A snapshot of your ratings and scores across key parameters.
+Project Contributions – Detailed evaluation of your work on assigned projects.
+Skill Assessment – Feedback from your leads and peers.
+Areas of Improvement – Constructive suggestions to help you grow further.
+Goals for Next Quarter – Targets set in alignment with your career path.
+
+We encourage you to review the report thoroughly and schedule a one-on-one session with your reporting manager if you have any questions or would like to discuss your evaluation in detail.
+
+Please note that all performance data is confidential and intended solely for your reference.
+
+
+We appreciate your hard work and dedication. Keep up the great momentum!
+
+
+Warm Regards,
+HR Department
+Effiya Technologies Pvt. Ltd.`,
+    time: '12:52',
+    date: '28 Jan',
+    isUnread: false,
+    isStarred: true,
+    category: 'primary',
+    hasAttachment: true,
     attachments: [
       {}
     ]
