@@ -536,6 +536,47 @@ Effiya Technologies Pvt. Ltd.`,
     ]
   },
   {
+    id: 112,
+    sender: 'Complete Your Welcome Kit Form – Effiya Technologies Pvt. Ltd.',
+    senderEmail: 'hr@effiya.com',
+    avatarLetter: 'E',
+    avatarColor: 'blue',
+    subject: 'Complete Your Welcome Kit Form – Effiya Technologies Pvt. Ltd.',
+    preview: 'Dear All, PFB the list of shortlisted stude...',
+    body: `Dear Diwan,
+
+
+As part of the onboarding process at Effiya Technologies Pvt. Ltd., we are pleased to provide you with a welcome kit.
+
+To ensure smooth processing and delivery, we request you to share your details, including your delivery address and preferences, by completing the form below.
+
+Please complete the form at your earliest convenience:
+
+Fill Welcome Kit Form
+
+You may also access the form by copying and pasting the following link into your browser:
+https://effiya.com/onboarding/welcome-kit
+
+If you face any issues while filling out the form, please feel free to reach out to us at hr@effiya.com with your candidate ID in the subject line.
+
+
+We look forward to welcoming you to the team and making your onboarding experience smooth and exciting.
+
+
+Best Regards,
+HR Team
+Effiya Technologies Pvt. Ltd.`,
+    time: '12:52',
+    date: '28 Jan',
+    isUnread: false,
+    isStarred: true,
+    category: 'primary',
+    hasAttachment: false,
+    attachments: [
+      {}
+    ]
+  },
+  {
     id: 15,
     sender: 'Vercel',
     senderEmail: 'notifications@vercel.com',
